@@ -17,7 +17,8 @@ button = Button(
                 fg="#f5b942",
                 bg="black",
                 activeforeground="black",
-                activebackground="#f5b942"
+                activebackground="#f5b942",
+                state=ACTIVE
                 )
 label = Label(window, text="Ceen Food", font=(
                                               'Arial', 40, 'bold'), 
