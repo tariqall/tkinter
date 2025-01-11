@@ -15,7 +15,9 @@ button = Button(
                 command=Order,
                 font=("Arial", 12, "bold"),
                 fg="#f5b942",
-                bg="black"
+                bg="black",
+                activeforeground="black",
+                activebackground="#f5b942"
                 )
 label = Label(window, text="Ceen Food", font=(
                                               'Arial', 40, 'bold'), 
