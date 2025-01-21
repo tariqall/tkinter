@@ -24,6 +24,7 @@ window = Tk()
 ceenfood = PhotoImage(file='ceenfood_rs.png')
 
 x = IntVar()
+# x = BooleanVar()
 
 entry = Entry(window, 
               font=('Arial', 50),
