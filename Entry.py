@@ -13,7 +13,17 @@ def delete():
 def backspace():
   entry.delete(len(entry.get())-1, END)
 
+def display():
+  if(x.get() == 1):
+    print('You Agreed.... :)')
+  else:
+    print('You Disagree... :(')
+
 window = Tk()
+
+ceenfood = PhotoImage(file='ceenfood_rs.png')
+
+x = IntVar()
 
 entry = Entry(window, 
               font=('Arial', 50),
@@ -26,6 +36,24 @@ entry.insert(0,'Pakistan')
 #entry.config(show='X')
 
 entry.pack(side=LEFT)
+
+checkbox_button = Checkbutton(window,
+                              text="Do You Agree? ",
+                              font=('Arial', 10),
+                              variable=x,
+                              command=display,
+                              fg='black',
+                              bg='white',
+                              onvalue=1,
+                              offvalue=0,
+                              activeforeground='black',
+                              activebackground='white',
+                              padx=25,
+                              pady=10,
+                              image=ceenfood,
+                              compound='left'
+                             )
+checkbox_button.pack()
 
 submit_button = Button(window, text='Submit', command=submit)
 submit_button.pack(side=RIGHT)
