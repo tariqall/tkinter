@@ -1,5 +1,7 @@
 from tkinter import *
 
+food = ["Pizza", "Burger", "Broast"]
+
 def submit():
   username = entry.get()
   print("Hello: " + username)
@@ -36,7 +38,13 @@ entry.insert(0,'Pakistan')
 #entry.config(state=DISABLED)
 #entry.config(show='X')
 
-entry.pack(side=LEFT)
+entry.pack(side=TOP)
+
+for index in range(len(food)):
+  radioButton = Radiobutton(window,
+                            text=food[index]
+                           )
+  radioButton.pack()
 
 checkbox_button = Checkbutton(window,
                               text="Do You Agree? ",
@@ -54,7 +62,7 @@ checkbox_button = Checkbutton(window,
                               image=ceenfood,
                               compound='left'
                              )
-checkbox_button.pack()
+checkbox_button.pack(side=BOTTOM)
 
 submit_button = Button(window, text='Submit', command=submit)
 submit_button.pack(side=RIGHT)
