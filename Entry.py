@@ -1,6 +1,6 @@
 from tkinter import *
 
-food = ["Pizza", "Burger", "Broast"]
+food = ["Pizza", "Burger", "Hot Dog"]
 
 def submit():
   username = entry.get()
@@ -21,12 +21,30 @@ def display():
   else:
     print('You Disagree... :(')
 
+def order():
+  if(y.get() == 0):
+    print('You Ordered Pizza')
+  elif(y.get() == 1):
+    print('You Ordered Burger')
+  elif(y.get() == 2):
+    print('You Ordered Hot Dog')
+  else:
+    print('You Ordered Nothing')
+
 window = Tk()
 
 ceenfood = PhotoImage(file='ceenfood_rs.png')
 
 x = IntVar()
+y = IntVar()
+
 # x = BooleanVar()
+
+pizzaImage = PhotoImage(file='pizza.png')
+burgerImage = PhotoImage(file='burger.png')
+hotdogImage = PhotoImage(file='hotdog.png')
+
+foodImages = [pizzaImage, burgerImage, hotdogImage]
 
 entry = Entry(window, 
               font=('Arial', 50),
@@ -42,9 +60,18 @@ entry.pack(side=TOP)
 
 for index in range(len(food)):
   radioButton = Radiobutton(window,
-                            text=food[index]
+                            text=food[index],
+                            variable=y,
+                            value=index,
+                            padx=25,
+                            font=("Impact", 20),
+                            image=foodImages[index],
+                            compound='left',
+                            indicatoron=0, # Sets The Circles Radio Off
+                            width=250,
+                            command=order
                            )
-  radioButton.pack()
+  radioButton.pack(anchor=W)
 
 checkbox_button = Checkbutton(window,
                               text="Do You Agree? ",
@@ -62,7 +89,7 @@ checkbox_button = Checkbutton(window,
                               image=ceenfood,
                               compound='left'
                              )
-checkbox_button.pack(side=BOTTOM)
+checkbox_button.pack(side=LEFT)
 
 submit_button = Button(window, text='Submit', command=submit)
 submit_button.pack(side=RIGHT)
