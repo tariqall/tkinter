@@ -95,10 +95,17 @@ checkbox_button.pack(side=LEFT)
 scale = Scale(window, 
               from_=100, 
               to=0,
-              length=400,
+              length=300,
               orient=VERTICAL,
-              tickinterval=10
+              tickinterval=10,
+              showvalue=1,
+              resolution=1,
+              troughcolor='#69EAFF',
+              fg='#FF1C00',
+              bg='#111111'
              )
+#scale.set(85) #This will set the value of the scale to required value
+scale.set(((scale['from'] - scale['to'])/2) + scale['to'])
 scale.pack()
 
 submit_button = Button(window, text='Submit', command=submit)
