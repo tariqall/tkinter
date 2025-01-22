@@ -5,6 +5,7 @@ food = ["Pizza", "Burger", "Hot Dog"]
 def submit():
   username = entry.get()
   print("Hello: " + username)
+  print("Thanks For Your Time! You Reported Temperature: " + str(scale.get()) + " Degree Celcius")
   entry.config(state=DISABLED)
 
 # In Delete Function, 0 means start of index and END means Last Character. So Entire Content Will Delete
@@ -47,7 +48,7 @@ hotdogImage = PhotoImage(file='hotdog.png')
 foodImages = [pizzaImage, burgerImage, hotdogImage]
 
 entry = Entry(window, 
-              font=('Arial', 50),
+              font=('Arial', 20),
               show="*",
               fg='#00FF00',
               bg='black'
@@ -64,7 +65,7 @@ for index in range(len(food)):
                             variable=y,
                             value=index,
                             padx=25,
-                            font=("Impact", 20),
+                            font=("Impact", 10),
                             image=foodImages[index],
                             compound='left',
                             indicatoron=0, # Sets The Circles Radio Off
@@ -90,6 +91,15 @@ checkbox_button = Checkbutton(window,
                               compound='left'
                              )
 checkbox_button.pack(side=LEFT)
+
+scale = Scale(window, 
+              from_=100, 
+              to=0,
+              length=400,
+              orient=VERTICAL,
+              tickinterval=10
+             )
+scale.pack()
 
 submit_button = Button(window, text='Submit', command=submit)
 submit_button.pack(side=RIGHT)
