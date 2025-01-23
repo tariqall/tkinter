@@ -11,6 +11,14 @@ def submit():
   print(myList.get(myList.curselection()))
   entry.config(state=DISABLED)
 
+def add_item():
+  myList.insert(myList.size(), listEntry.get())
+  myList.config(height=myList.size())
+
+def delete_item():
+  myList.delete(myList.curselection())
+  myList.config(height=myList.size())
+
 # In Delete Function, 0 means start of index and END means Last Character. So Entire Content Will Delete
 def delete():
   entry.delete(0,END)
@@ -138,9 +146,19 @@ myList.insert(6, "Soups")
 myList.insert(7, "Salads")
 
 myList.config(height=myList.size())
+listEntry = Entry(window, 
+              font=('Arial', 10),
+              fg='#00FF00',
+              bg='black'
+             )
+listEntry.pack()
 
 submit_button = Button(window, text='Submit', command=submit)
 submit_button.pack()
+add_item_button = Button(window, text='Add To List', command=add_item)
+add_item_button.pack()
+delete_item_button = Button(window, text='Delete From List', command=delete_item)
+delete_item_button.pack()
 delete_button = Button(window, text='Delete', command=delete)
 delete_button.pack()
 backspace_button = Button(window, text='Back Space', command=backspace)
