@@ -3,12 +3,19 @@ from tkinter import *
 food = ["Pizza", "Burger", "Hot Dog"]
 
 def submit():
+  food = []
   username = entry.get()
   print("Hello: " + username)
   #Following Line Of Code Only Executes When Scale Object is in Operation
   #print("Thanks For Your Time! You Reported Temperature: " + str(scale.get()) + " Degree Celcius")
   print("You have ordered")
-  print(myList.get(myList.curselection()))
+  
+  for index in myList.curselection():
+    food.insert(index, myList.get(index))
+  
+  for index in food:
+    print(index)
+
   entry.config(state=DISABLED)
 
 def add_item():
@@ -133,7 +140,8 @@ coldLabel.pack()
 myList = Listbox(window,
                  font=("Constania", 10),
                  bg='goldenrod',
-                 width=12
+                 width=12,
+                 selectmode=MULTIPLE
                 )
 myList.pack()
 
