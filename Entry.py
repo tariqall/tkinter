@@ -5,7 +5,10 @@ food = ["Pizza", "Burger", "Hot Dog"]
 def submit():
   username = entry.get()
   print("Hello: " + username)
-  print("Thanks For Your Time! You Reported Temperature: " + str(scale.get()) + " Degree Celcius")
+  #Following Line Of Code Only Executes When Scale Object is in Operation
+  #print("Thanks For Your Time! You Reported Temperature: " + str(scale.get()) + " Degree Celcius")
+  print("You have ordered")
+  print(myList.get(myList.curselection()))
   entry.config(state=DISABLED)
 
 # In Delete Function, 0 means start of index and END means Last Character. So Entire Content Will Delete
@@ -44,7 +47,6 @@ y = IntVar()
 pizzaImage = PhotoImage(file='pizza.png')
 burgerImage = PhotoImage(file='burger.png')
 hotdogImage = PhotoImage(file='hotdog.png')
-
 foodImages = [pizzaImage, burgerImage, hotdogImage]
 
 entry = Entry(window, 
@@ -59,7 +61,8 @@ entry.insert(0,'Pakistan')
 
 entry.pack(side=TOP)
 
-for index in range(len(food)):
+#Radio Button Code
+""" for index in range(len(food)):
   radioButton = Radiobutton(window,
                             text=food[index],
                             variable=y,
@@ -72,9 +75,10 @@ for index in range(len(food)):
                             width=250,
                             command=order
                            )
-  radioButton.pack(anchor=W)
+  radioButton.pack(anchor=W) """
 
-checkbox_button = Checkbutton(window,
+#Checkbox Code
+""" checkbox_button = Checkbutton(window,
                               text="Do You Agree? ",
                               font=('Arial', 10),
                               variable=x,
@@ -90,7 +94,11 @@ checkbox_button = Checkbutton(window,
                               image=ceenfood,
                               compound='left'
                              )
-checkbox_button.pack(side=LEFT)
+checkbox_button.pack(side=LEFT) """
+
+""" hotImage = PhotoImage(file='hot.png')
+hotLabel = Label(image=hotImage)
+hotLabel.pack()
 
 scale = Scale(window, 
               from_=100, 
@@ -108,13 +116,34 @@ scale = Scale(window,
 scale.set(((scale['from'] - scale['to'])/2) + scale['to'])
 scale.pack()
 
+coldImage = PhotoImage(file='cold.png')
+coldLabel = Label(image=coldImage)
+coldLabel.pack()
+ """
+
+ #Listbox Code
+myList = Listbox(window,
+                 font=("Constania", 10),
+                 bg='goldenrod',
+                 width=12
+                )
+myList.pack()
+
+myList.insert(1, "Pizza")
+myList.insert(2, "Burger")
+myList.insert(3, "Noodles")
+myList.insert(4, "Garlic Bread")
+myList.insert(5, "French Fries")
+myList.insert(6, "Soups")
+myList.insert(7, "Salads")
+
+myList.config(height=myList.size())
+
 submit_button = Button(window, text='Submit', command=submit)
-submit_button.pack(side=RIGHT)
-
+submit_button.pack()
 delete_button = Button(window, text='Delete', command=delete)
-delete_button.pack(side=RIGHT)
-
+delete_button.pack()
 backspace_button = Button(window, text='Back Space', command=backspace)
-backspace_button.pack(side=RIGHT)
+backspace_button.pack()
 
 window.mainloop()
